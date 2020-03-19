@@ -27,14 +27,3 @@ public class CashMachine {
         }
     }
 }
-/*Locale.setDefault(Locale.ENGLISH);
-        Operation operation;
-        try {
-            do {
-                operation = ConsoleHelper.askOperation();
-
-                CommandExecutor.execute(operation);
-            } while (operation != Operation.EXIT);
-        }catch (InterruptOperationException e){
-            ConsoleHelper.writeMessage("Bay Bay!!!");
-        }*/
