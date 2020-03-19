@@ -30,7 +30,6 @@ public class ConsoleHelper {
             if (result.equalsIgnoreCase("EXIT")) {
                 throw new InterruptOperationException();
             }
-            //return bis.readLine();
         } catch (IOException e) {
 
         }
@@ -40,7 +39,6 @@ public class ConsoleHelper {
     public static String askCurrencyCode() throws InterruptOperationException{
         String currencyCode = "";
         while (true) {
-            //writeMessage("Введите код валюты: ");
             writeMessage(res.getString("choose.currency.code"));
             currencyCode = readString();
             if (currencyCode != null) {
@@ -57,7 +55,6 @@ public class ConsoleHelper {
         String banknotsNominal;
         String banknotsQuantity;
         while (true) {
-            //writeMessage("Введите номинал и количество банкнот через пробел: ");
             writeMessage(String.format(res.getString("choose.denomination.and.count.format"), currencyCode));
             String nominalAndQuantity = readString();
             if (nominalAndQuantity != null) {
@@ -74,7 +71,6 @@ public class ConsoleHelper {
                             break;
                         }
                     } catch (Exception e) {
-                        //ConsoleHelper.writeMessage("Введена нечисловая информация, пожалуйста, введите номинал и количество банкнот заново");
                         writeMessage(res.getString("invalid.data"));
                     }
                 }
@@ -86,18 +82,17 @@ public class ConsoleHelper {
     public static Operation askOperation() throws InterruptOperationException{
         Operation result = null;
         while (true) {
-            //writeMessage("Какую операцию необходимо выполнить? (1 - INFO, 2 - DEPOSIT, 3 - WITHDRAW, 4 - EXIT)");
             writeMessage(res.getString("choose.operation"));
             writeMessage("1 - "+res.getString("operation.INFO")+", "+"2 - "+res.getString("operation.DEPOSIT")+", "+"3 - "+res.getString("operation.WITHDRAW")+", "+"4 - "+res.getString("operation.EXIT"));
             String operation = readString();
             switch (operation) {
-                case "0": throw new IllegalArgumentException();//writeMessage("Введена неверная информация. Пожалуйста, введите число из предложенных");
+                case "0": throw new IllegalArgumentException();
                 case "1":
                 case "2":
                 case "3":
                 case "4":   result = Operation.getAllowableOperationByOrdinal(Integer.parseInt(Objects.requireNonNull(operation)));
                             break;
-                default: //writeMessage("Введена неверная информация. Пожалуйста, введите число из предложенных");
+                default: 
                         writeMessage(res.getString("invalid.data"));
                         continue;
             }
